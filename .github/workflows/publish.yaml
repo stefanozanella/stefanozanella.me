@@ -30,7 +30,7 @@ jobs:
         with:
           version: 3.x
       - name: Build with Hugo
-        run: task hugo --gc --minify
+        run: task publish
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -16,12 +16,11 @@ tasks:
       - task: hugo-docker
         vars:
           ARGS: server -D --bind 0.0.0.0
-
   publish:
     cmds:
       - task: hugo-docker
         vars:
-          ARGS:
+          ARGS: --gc --minify
 
   hugo-docker:
     internal: true
