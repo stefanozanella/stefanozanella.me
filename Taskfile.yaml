@@ -1,0 +1,28 @@
+version: 3
+
+tasks:
+  hugo:
+    cmds:
+      - task: hugo-docker
+        vars:
+          ARGS: "{{.CLI_ARGS}}"
+  server:
+    cmds:
+      - task: hugo-docker
+        vars:
+          ARGS: server --bind 0.0.0.0
+  preview:
+    cmds:
+      - task: hugo-docker
+        vars:
+          ARGS: server -D --bind 0.0.0.0
+
+  publish:
+    cmds:
+      - task: hugo-docker
+        vars:
+          ARGS:
+
+  hugo-docker:
+    internal: true
+    cmd: docker run --rm -it -p 1313:1313 -v ${PWD}:/src hugomods/hugo:latest hugo {{.ARGS}}
